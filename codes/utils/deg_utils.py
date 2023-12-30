@@ -57,6 +57,7 @@ def random_mask(height=256, width=256, pad=50,
 def mask_to(tensor, mask_root='data/datasets/gt_keep_masks/genhalf', mask_id=-1, n=100):
     batch = tensor.shape[0]
     mask = random_mask(tensor.shape[2], tensor.shape[3])[None, ...]
+    mask = 1. - mask
 
     mask = torch.tensor(mask).permute(0, 3, 1, 2).float()
     # for images are clipped or scaled
